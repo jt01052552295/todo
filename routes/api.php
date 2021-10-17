@@ -14,6 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+
+
+// prefix 로 버전 추가하기
+Route::prefix(env('APP_VERSION').'/')->group(function() {
+  Route::apiResource('todos', \App\Http\Controllers\API\TodoController::class);
 });
